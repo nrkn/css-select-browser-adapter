@@ -1,6 +1,6 @@
 {
   "name": "css-select-browser-adapter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Browser adapter for css-select",
   "main": "index.js",
   "directories": {
@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/nrkn/css-select-browser-adapter#readme",
   "devDependencies": {
-    "css-select": "^1.2.0",
+    "css-select": "^2.0.2",
     "jsdom": "^9.8.0",
     "mocha": "^3.1.2"
   }
