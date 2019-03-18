@@ -1,6 +1,6 @@
 {
   "name": "css-select-browser-adapter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Browser adapter for css-select",
   "main": "index.js",
   "directories": {
