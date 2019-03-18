@@ -113,7 +113,7 @@ describe("Adapter API", function(){
 });
 
 describe("Adapter Select", function(){
-	var options = { adapter: adapter };
+	var options = { adapter };
 
 	it("should universal", function(){
 		var body = getBody(html);
