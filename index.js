@@ -2,7 +2,7 @@ function isTag(elem){
 	return elem.nodeType === 1;
 }
 function getChildren(elem){
-	return Array.prototype.slice.call(elem.childNodes, 0);
+	return elem.childNodes ? Array.prototype.slice.call(elem.childNodes, 0) : [];
 }
 function getParent(elem){
 	return elem.parentElement;
@@ -55,6 +55,8 @@ var adapter = {
 	getAttributeValue: function(elem, name){
 		if(elem.attributes && elem.attributes[name]){
 			return elem.attributes[name].value;
+		} else if (name === "class" && elem.classList) {
+			return Array.from(elem.classList).join(" ");
 		}
 	},
 	hasAttrib: function(elem, name){
