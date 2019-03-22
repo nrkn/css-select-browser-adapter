@@ -1,3 +1,5 @@
+const EMPTY_OBJECT = {};
+
 function isTag(elem){
 	return elem.nodeType === 1;
 }
@@ -5,7 +7,7 @@ function getChildren(elem){
 	return elem.childNodes ? Array.prototype.slice.call(elem.childNodes, 0) : [];
 }
 function getParent(elem){
-	return elem.parentElement;
+	return elem.parentNode;
 }
 function removeSubsets(nodes) {
 	var idx = nodes.length, node, ancestor, replace;
@@ -48,23 +50,24 @@ var adapter = {
 	},
 	getSiblings: function(elem){
 		var parent = getParent(elem);
-		return parent && getChildren(parent);
+		return parent ? getChildren(parent) : [elem];
 	},
 	getChildren: getChildren,
 	getParent: getParent,
 	getAttributeValue: function(elem, name){
-		if(elem.attributes && elem.attributes[name]){
-			return elem.attributes[name].value;
+		if(elem.attributes && name in elem.attributes){
+			var attr = elem.attributes[name];
+			return typeof attr === "string" ? attr : attr.value;
 		} else if (name === "class" && elem.classList) {
 			return Array.from(elem.classList).join(" ");
 		}
 	},
 	hasAttrib: function(elem, name){
-		return name in elem.attributes;
+		return name in (elem.attributes || EMPTY_OBJECT);
 	},
 	removeSubsets: removeSubsets,
 	getName: function(elem){
-		return elem.tagName.toLowerCase();
+		return (elem.tagName || "").toLowerCase();
 	},
 	findOne: function findOne(test, arr){
 		var elem = null;
