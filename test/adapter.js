@@ -1,12 +1,12 @@
 var select  = require("css-select"),
     adapter = require("../"),
-    jsdom   = require("jsdom"),
+    { JSDOM }   = require("jsdom"),
     assert  = require("assert");
 
 var html = "<main><div></div><div class=\"apple\"></div><span class=\"pear potato\"><strong id=\"cheese-burger\">Hello</strong>, <em>World!</em></span></main>";
 
 function getBody(html){
-	return jsdom.jsdom(html).defaultView.document.querySelector("body");
+	return new JSDOM(html).window.document.querySelector("body");
 }
 
 describe("Adapter API", function(){
